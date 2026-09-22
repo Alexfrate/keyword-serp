@@ -1,12 +1,12 @@
 ---
 name: keyword-serp
 description: >
-  Pick keywords with real demand and a weak organic page 1, then say what
-  page type to build. Copy, if written, is spoken and professional: no
-  agency brochure, no invented clients. Does not publish the site. Uses
-  Keyword Planner plus the organic Google results (ads do not count).
-  Triggers: keywords, keyword research, Planner, SERP, low competition,
-  search intent, H1, what people search.
+  Tells an LLM how to structure an SEO page: pick a query with real demand
+  and a weak organic page 1, choose the page type from the SERP, write
+  spoken professional copy, then request indexing on that URL. MCPs are
+  optional. browser-use alone is enough and spends more tokens. Does not
+  promise rankings. Triggers: keywords, keyword research, Planner, SERP,
+  low competition, indexing, structure an SEO page.
   Use when the user runs /keyword-serp.
 ---
 
@@ -16,8 +16,9 @@ This picks **queries**. It does not build the site. The research is the same on 
 
 Open these when you need them:
 
-- `references/tools.md` — what to use, with links: Planner, Search Console, Bing, browser-use, Elementor-MCP, WordPress REST
+- `references/tools.md` — what to use, with links. MCPs are optional. browser-use alone is enough and spends more tokens
 - `references/reading-the-serp.md` — how to judge competition (not the Planner competition dot)
+- `references/indexing.md` — after the page is live: request indexing on that URL, Bing for ChatGPT, indexed is not ranking
 
 ## Before opening Planner
 
@@ -77,6 +78,8 @@ For Italian pages, run the copy through an Italian humanizer before publishing. 
 - The page has to match the SERP intent (you do not beat a tax SERP with a shop page).
 - Indexed is not ranking. ChatGPT copies whoever is already on the SERP, later.
 
-## Out of scope
+## After the page is live
 
-Publishing (Elementor, Yoast, Shopify metafields, Next `metadata`) and the engines (Search Console, Bing, Maps) are the next step. This skill stops at the table. Tool links for that next step are in `references/tools.md`.
+Follow `references/indexing.md`. Short version: request indexing on that URL only (the button is in the browser), submit the same URL on Bing, do not resubmit a sitemap that is already Success. Indexed is not page 1.
+
+How you save the page (Elementor, Yoast, Shopify, Next) depends on the CMS. Links are in `references/tools.md`.

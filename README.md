@@ -1,8 +1,14 @@
 # keyword-serp
 
-Pick queries people actually search, where the organic page 1 is weak, then match the page type to that SERP. Works on WordPress, Shopify, Next, Webflow, or plain HTML. It does not promise rankings.
+A skill that tells an LLM how to structure an SEO page: which query to pick, what kind of page to write, and how to ask Google and Bing to fetch it. It does not promise rankings.
 
-The skill is `SKILL.md`. Details are in `references/`.
+MCPs are optional. browser-use alone covers Planner, the SERP, Search Console, and Bing. Same result, higher token use, because each screen is a long turn.
+
+Works on WordPress, Shopify, Next, Webflow, or plain HTML.
+
+- `SKILL.md` picks the query and the page type.
+- `references/indexing.md` is the indexing step.
+- `references/tools.md` lists the links.
 
 ## Tools
 
