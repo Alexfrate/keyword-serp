@@ -19,6 +19,7 @@ Open these when you need them:
 - `references/tools.md` — what to use, with links. MCPs are optional. browser-use alone is enough and spends more tokens
 - `references/reading-the-serp.md` — how to judge competition (not the Planner competition dot)
 - `references/indexing.md` — after the page is live: request indexing on that URL, Bing for ChatGPT, indexed is not ranking
+- `references/writing-the-page.md` — when you write: weight, table, cards, phone, meta. Do it without being asked again
 
 ## Before opening Planner
 
@@ -66,6 +67,7 @@ Content rules:
 - No invented clients, reviews, numbers, or case studies. Label demos as demos.
 - Prices only if they are the real ones, or "from…" if that is the offer.
 - The first answer on the page is closed: what it is, what it is not, the price if there is one, how to get in touch. Then the rest.
+- The rest of the method (weight against page 1, the table, cards with no holes, phone, meta put back after save) is in `references/writing-the-page.md`. Apply it without waiting to be asked.
 
 For Italian pages, run the copy through an Italian humanizer before publishing. Do not paste model prose.
 
