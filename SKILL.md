@@ -3,9 +3,9 @@ name: keyword-serp
 description: >
   Tells an LLM how to structure an SEO page: pick a query with real demand
   and a weak organic page 1, choose the page type from the SERP, write
-  spoken professional copy, then request indexing on that URL. MCPs are
-  optional. browser-use alone is enough and spends more tokens. Does not
-  promise rankings. Triggers: keywords, keyword research, Planner, SERP,
+  spoken professional copy, then request indexing on that URL. Volumes
+  and Search Console come from the connected tools, not the browser. Does
+  not promise rankings. Triggers: keywords, keyword research, Planner, SERP,
   low competition, indexing, structure an SEO page.
   Use when the user runs /keyword-serp.
 ---
@@ -16,7 +16,7 @@ This picks **queries**. It does not build the site. The research is the same on 
 
 Open these when you need them:
 
-- `references/tools.md` — what to use, with links. MCPs are optional. browser-use alone is enough and spends more tokens
+- `references/tools.md` — what to use. Volumes and Search Console from the connected tools; the browser is the fallback
 - `references/reading-the-serp.md` — how to judge competition (not the Planner competition dot)
 - `references/indexing.md` — after the page is live: request indexing on that URL, Bing for ChatGPT, indexed is not ranking
 - `references/writing-the-page.md` — when you write: weight, table, cards, phone, meta. Do it without being asked again
@@ -35,7 +35,7 @@ Without 1 you invent keywords. Without 4 you cannibalize.
 ## Steps
 
 1. **Seeds** from the customer's words, not trade jargon. *brochure site*, *how much does a window cost*, not *digital solutions*.
-2. **Keyword Planner** on those seeds. Geo = the area in step 3. Last 12 months. Keep volume and related ideas. Ignore the Competition column: that is ads, not organic. Detail in `tools.md`.
+2. **Keyword Planner** on those seeds, through the API (not the browser, once Basic access is on). Geo = the area in step 3, the right language, Google search network. Last 12 months. Keep volume and related ideas. Ignore Competition and CPC: those are ads, not organic. Detail in `tools.md`.
 3. **Organic SERP** for each candidate (logged out, ads ignored). Detail in `reading-the-serp.md`. Volume alone is not enough. The SERP alone is not enough.
 4. **Keep** the query if (a) people actually search it, (b) page 1 is beatable or the intent is uncovered, (c) the business can answer without inventing a product.
 5. **Drop** it even with high volume if the top results are directories, Wikipedia, Amazon, newspapers, a Maps pack (and you are not local), or an intent you do not sell.

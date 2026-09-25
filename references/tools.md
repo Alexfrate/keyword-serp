@@ -22,18 +22,27 @@ If Planner is blocked, Google Autocomplete, "People also ask", and related searc
 
 Search Console and Bing come **after**, on pages that are already published. They do not discover new keywords on a site with no traffic.
 
-## Recommended path, and the fallback
+## Path
 
-Same job, two doors. If the MCP is connected, use it. If it is not, **browser-use** opens the same screens. It spends more tokens and breaks more often (overlays, quotas, a bad paste), but for a few URLs the result is the same.
+Read volumes and Search Console from the connected tools. The browser is the fallback, and it stays mandatory only for the SERP (logged out) and for the "Request indexing" button.
 
-| Job | Preferred (MCP) | Fallback |
+| Job | First choice | Browser only if |
 |---|---|---|
-| Volume and ideas | Keyword Planner via Google Ads (`google-keyword-planner-mcp`). Ignore Competition and CPC: those are ads. A new Ads developer token stays in test mode until Google approves Basic access. Until then, browser only. | browser-use on Planner, Ads account already logged in. Hide the ad-block overlay. |
-| Organic SERP | No MCP replaces looking. | browser-use, logged out. Ignore ads and Shopping. |
-| "Is it on Google?", queries, clicks, position | Search Console (`searchconsole-mcp`). The API **inspects**. It does not press "Request indexing". | browser-use on Search Console. The request button is only here. A few URLs a day. |
-| Submit URLs and crawl data for ChatGPT/Copilot | Bing Webmaster (`bing-webmaster-mcp`), API key. The URL must match the registered one, including the slash. | browser-use on Bing Webmaster. Do not resubmit a sitemap that is already Success. |
+| Volume and ideas | Google Ads API, the same Keyword Planner methods (`generateKeywordIdeas`, `generateKeywordHistoricalMetrics`). Put geo, language, and the Google search network in the call, or it is not the screen you think you opened. Ignore Competition and CPC: those are ads. | The Cloud project's access is not **Basic** yet. |
+| Organic SERP | Nothing replaces looking. | Always: logged out. Ignore ads and Shopping. |
+| "Is it on Google?", queries, clicks, position | Search Console MCP. It inspects. It does not press "Request indexing". | For that button. A few URLs a day. |
+| Visits, sessions, events | Analytics (GA4) MCP. It counts people who accepted the cookie banner. It does not have the Google query, so it does not pick keywords. | Never, for keywords. |
+| Submit a URL for ChatGPT/Copilot | Bing Webmaster, if the API key exists. The URL must match, including the slash. | Until the key exists. Do not resubmit a sitemap that is already Success. |
 
-Do not connect the MCPs while new pages are few. The browser is enough. Connect them when reading Search Console by hand becomes the job.
+### What we checked on Planner
+
+[google-keyword-planner-mcp](https://github.com/ncosentino/google-keyword-planner-mcp) calls the same function as the Planner screen. It is not a site that estimates volume. Downloading it is not enough to make it answer.
+
+- Access lives on the Cloud project, not on a developer token (Google turned those off in September 2026). **Test** only talks to fake accounts. **Explorer** refuses volumes with `DEVELOPER_TOKEN_NOT_APPROVED`. You need **Basic**.
+- Basic does not pass until the OAuth brand is verified: app name, homepage, privacy policy on an authorized domain, then "Verify branding" and "Publish branding". The verify button shows up only after the app is **In production**, not while it is in Testing.
+- Same phrase, Italy, Google search network: the screen shows a dash (or the 0–10 bucket, which is not a real figure). The API returns the phrase and **no** average monthly searches. That is the same fact. Do not reopen the browser to fetch "the real number".
+- If you doubt the call is mute, repeat it on a phrase that has volume (for example "web designer" in Italy does). If that one returns a number and yours does not, yours has no number.
+- That repo, as published, still requires `GOOGLE_ADS_DEVELOPER_TOKEN` and will not start. The door that works is a direct API call with the OAuth refresh token kept on the machine. Credentials do not go in the repo.
 
 ## Links
 
@@ -49,10 +58,10 @@ Credentials (application passwords, API keys, tokens) stay on the machine. They 
 | "Is it on Google?", queries, clicks, position | [Search Console](https://search.google.com/search-console) · MCP [searchconsole-mcp](https://github.com/chrishart0/searchconsole-mcp) |
 | Bing, URL submit, ChatGPT/Copilot | [Bing Webmaster](https://www.bing.com/webmasters) · MCP [bing-webmaster-mcp](https://github.com/idowebid/bing-webmaster-mcp) |
 
-On an Elementor site, page publishing is Elementor-MCP. Yoast, redirects, and anything that is not the builder go through the WordPress REST API. browser-use covers Planner, the SERP, Search Console, and Bing when the MCP is not connected. "Request indexing" exists only in the browser.
+On an Elementor site, page publishing is Elementor-MCP. Yoast, redirects, and anything that is not the builder go through the WordPress REST API. The browser covers the SERP, the "Request indexing" button, and Bing when the key is missing. It no longer covers volumes or Search Console reads, once those tools are connected.
 
 ## Do not use as a source
 
 - Keyword lists generated by a model (including this skill) without Planner and a SERP.
-- Volume from one tool, without opening Google.
+- Volume from a model or a paid tool, without Planner (API or screen) and without the SERP.
 - Keyword stuffing to please an SEO plugin (a green Yoast dot and the like).
